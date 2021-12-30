@@ -11,31 +11,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
 
-  <body>
-    <a id="player1" class="waves-effect waves-light btn" style="height: 45vh; width:100vw; writing-mode:vertical-rl;"><p id="player1info" style="font-size: 14vh;">5:00</p></a>
+  <body class= "grey darken-3">
+    <a id="player1" class="btn grey darken-2" style="height: 45vh; width:100vw; writing-mode:vertical-rl;"><p id="player1info" style="font-size: 14vh;">5:00</p></a>
     <div style="height: 10vh; display: flex; align-items: center; justify-content: space-evenly;">
-      <a id="play" href="#"> <i id="playIcon" class="material-icons medium center">pause</i></a>
-      <a id="restart" href="#"> <i class="material-icons medium center">replay</i></a>
-      <a href="#settings" class="modal-trigger"> <i class="material-icons medium center">settings</i></a>
+      <a id="play" href="#"> <i id="playIcon" class="material-icons medium center grey-text text-lighten-2">pause</i></a>
+      <a id="restart" href="#"> <i class="material-icons medium center grey-text text-lighten-2">replay</i></a>
+      <a href="#settings" class="modal-trigger"> <i class="material-icons medium center grey-text text-lighten-2">settings</i></a>
+      <a id="fullscreen" href="#"> <i id="fullscreenIcon"class="material-icons medium center grey-text text-lighten-2">fullscreen</i></a>
     </div>
-    <a id="player2" class="waves-effect waves-light btn" style="height: 45vh; width:100vw; writing-mode:vertical-rl;"><p id="player2info"  style="font-size: 14vh;">5:00</p></a>
+    <a id="player2" class="btn grey darken-2" style="height: 45vh; width:100vw; writing-mode:vertical-rl;"><p id="player2info"  style="font-size: 14vh;">5:00</p></a>
     
-    <div id="settings" class="modal">
+    <div id="settings" class="modal grey darken-3 grey-text text-lighten-2">
       <div class="modal-content">
         <h4>Settings</h4>
         <form action="#">
           <p>Set time</p>
           <p class="range-field">
-            <input type="range" id="newmin" min="1" max="120" />
+            <input id="newmin" type="number" class="validate grey-text text-lighten-2" min="1" max="120">
           </p>
           <p>Set increment</p>
           <p class="range-field">
-            <input type="range" id="newinc" min="0" max="180"/>
+            <input id="newinc" type="number" class="validate grey-text text-lighten-2" min="0" max="180">
           </p>
         </form>
       </div>
-      <div class="modal-footer">
-        <a id="clock"href="#!" class="waves-effect waves-green btn-flat">Set Clock</a>
+      <div class="modal-footer grey darken-2">
+        <a id="clock"href="#!" class="waves-effect waves-grey btn-flat">Set Clock</a>
       </div>
     </div>
     

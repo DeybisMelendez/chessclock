@@ -5,7 +5,7 @@ document.getElementById("settings").onclick = settings
 document.getElementById("play").onclick = play
 const playIcon = document.getElementById("playIcon")
 
-var audio = new Audio("assets/clock-tock.ogg")
+var audio = new Audio("assets/tick.ogg")
 const min = urlParams.get("min") || 5
 const inc = urlParams.get("inc") || 0
 const player1 = document.getElementById("player1")
@@ -141,3 +141,40 @@ function setClock() {
     var newinc = document.getElementById("newinc").value.toString()
     window.location.href = "?min=" + newmin + "&inc=" + newinc
 }
+
+// Fullscreen
+var elem = document.documentElement
+var isFullscreen = false
+document.getElementById("fullscreen").onclick = fullscreen
+
+function fullscreen() {
+    if (isFullscreen == true) {
+        closeFullscreen()
+        document.getElementById("fullscreenIcon").innerText = "fullscreen"
+        isFullscreen = false
+    } else {
+        openFullscreen()
+        document.getElementById("fullscreenIcon").innerText = "fullscreen_exit"
+        isFullscreen = true
+    }
+}
+function openFullscreen() {
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen()
+    } else if (elem.webkitRequestFullscreen) { /* Safari */
+      elem.webkitRequestFullscreen()
+    } else if (elem.msRequestFullscreen) { /* IE11 */
+      elem.msRequestFullscreen()
+    }
+  }
+  
+  /* Close fullscreen */
+  function closeFullscreen() {
+    if (document.exitFullscreen) {
+      document.exitFullscreen()
+    } else if (document.webkitExitFullscreen) { /* Safari */
+      document.webkitExitFullscreen()
+    } else if (document.msExitFullscreen) { /* IE11 */
+      document.msExitFullscreen()
+    }
+  }
