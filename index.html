@@ -1,47 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chess Clock Online</title>
-    <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  </head>
+    <link type="text/css" rel="stylesheet" href="css/index.css"  media="screen,projection"/>
+</head>
+<body class="grey">
+    <div class="row">
+        <button id="player1" class="button"></button>
+        <div class="menu-bar">
+            <a id="pause" href="#"> <i id="pauseIcon" class="icon material-icons">pause</i></a>
+            <a id="restart" href="#"> <i class="icon material-icons">replay</i></a>
+            <a id="settings" href="#"> <i class="icon material-icons">settings</i></a>
+            <!--<a id="fullscreen" href="#"> <i id="fullscreenIcon" class="icon material-icons">fullscreen</i></a>-->
+          </div>
+        <button id="player2" class="button"></button>
+    </div>
 
-  <body class= "grey darken-3">
-    <a id="player1" class="btn grey darken-2" style="height: 45vh; width:100vw; writing-mode:vertical-rl;"><p id="player1info" style="font-size: 14vh;">5:00</p></a>
-    <div style="height: 10vh; display: flex; align-items: center; justify-content: space-evenly;">
-      <a id="play" href="#"> <i id="playIcon" class="material-icons medium center grey-text text-lighten-2">pause</i></a>
-      <a id="restart" href="#"> <i class="material-icons medium center grey-text text-lighten-2">replay</i></a>
-      <a href="#settings" class="modal-trigger"> <i class="material-icons medium center grey-text text-lighten-2">settings</i></a>
-      <a id="fullscreen" href="#"> <i id="fullscreenIcon"class="material-icons medium center grey-text text-lighten-2">fullscreen</i></a>
+    <!-- The Modal -->
+    <div id="settings-menu" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h1>Settings</h1>
+      <h2>Minutes per player</h2>
+      <input id="newmin" type="number" min="1" max="180">
+      <h2>Increment</h2>
+      <input id="newinc" type="number" min="0" max="180">
+      <div class="modal-footer"><button id="clock" class="setclock">Set Clock</button></div>
     </div>
-    <a id="player2" class="btn grey darken-2" style="height: 45vh; width:100vw; writing-mode:vertical-rl;"><p id="player2info"  style="font-size: 14vh;">5:00</p></a>
-    
-    <div id="settings" class="modal grey darken-3 grey-text text-lighten-2">
-      <div class="modal-content">
-        <h4>Settings</h4>
-        <form action="#">
-          <p>Set time</p>
-          <p class="range-field">
-            <input id="newmin" type="number" class="validate grey-text text-lighten-2" min="1" max="120">
-          </p>
-          <p>Set increment</p>
-          <p class="range-field">
-            <input id="newinc" type="number" class="validate grey-text text-lighten-2" min="0" max="180">
-          </p>
-        </form>
-      </div>
-      <div class="modal-footer grey darken-2">
-        <a id="clock"href="#!" class="waves-effect waves-grey btn-flat">Set Clock</a>
-      </div>
-    </div>
-    
-    <!--JavaScript at end of body for optimized loading-->
-    <script type="text/javascript" src="js/materialize.min.js"></script>
-    <script type="text/javascript" src="js/chessclock.js"></script>
-  </body>
+  
+  </div>
+
+    <script type="text/javascript" src="js/index.js"></script>
+</body>
 </html>
