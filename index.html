@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
     <title>Chess Clock Online</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="css/index.css"  media="screen,projection"/>
 </head>
 <body class="grey">
     <div class="row">
-        <button id="player1" class="button"></button>
+        <button id="player1" class="button" style="transform: rotate(180deg);"></button>
         <div class="menu-bar">
             <a id="pause" href="#"> <i id="pauseIcon" class="icon material-icons">pause</i></a>
             <a id="restart" href="#"> <i class="icon material-icons">replay</i></a>
@@ -28,9 +28,9 @@
       <span class="close">&times;</span>
       <h1>Settings</h1>
       <h2>Minutes per player</h2>
-      <input id="newmin" type="number" min="1" max="180">
+      <input id="newmin" type="number" pattern="[0-9]*" min="1" max="180">
       <h2>Increment</h2>
-      <input id="newinc" type="number" min="0" max="180">
+      <input id="newinc" type="number" pattern="[0-9]*" min="0" max="180">
       <div class="modal-footer"><button id="clock" class="setclock">Set Clock</button></div>
     </div>
   

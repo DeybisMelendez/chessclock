@@ -1,24 +1,23 @@
 body {
-    padding: 0px;
-    margin: 0px;
+  padding: 0px;
+  margin: 0px;
 }
 
 .row {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .button {
-    background-color: #424242;
-    border: none;
-    color: #eeeeee;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 20vw;
-    height: 45vh;
-    writing-mode: vertical-rl;
+  background-color: #424242;
+  border: none;
+  color: #eeeeee;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15vh;
+  height: 45vh;
   }
 
 .button:hover{
