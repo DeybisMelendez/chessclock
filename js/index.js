@@ -1,16 +1,3 @@
-//Creando una experiencia pantalla completa
-window.addEventListener("load", function() { window. scrollTo(0, 0) })
-document.addEventListener("touchmove", function(e) { e.preventDefault() });
-var body = document.documentElement;
-if (body.requestFullscreen) {
-  body.requestFullscreen();
-} else if (body.webkitrequestFullscreen) {
-  body.webkitrequestFullscreen();
-} else if (body.mozrequestFullscreen) {
-  body.mozrequestFullscreen();
-} else if (body.msrequestFullscreen) {
-  body.msrequestFullscreen();
-}
 const queryString = window.location.search
 const urlParams = new URLSearchParams(queryString)
 const tick1 = new Audio("assets/tick.ogg")
@@ -151,14 +138,3 @@ window.onclick = function(event) {
     modal.style.display = "none"
   }
 }
-
-//no sleep
-
-import NoSleep from 'nosleep.js';
-var noSleep = new NoSleep();
-// Enable wake lock.
-// (must be wrapped in a user input event handler e.g. a mouse or touch handler)
-document.addEventListener('click', function enableNoSleep() {
-    document.removeEventListener('click', enableNoSleep, false);
-    noSleep.enable();
-  }, false);
