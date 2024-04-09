@@ -1,46 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="A simple and free online chess clock with customizable time increments." />
+    <meta name="keywords" content="digital chess clock, online chess clock, free chess timer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui"/>
+    <title>Digital Chess Clock Online - Free Chess Timer</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet" href="/css/app.css" media="screen,projection"/>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="description" content="A simple Chess Clock online free, allows increments." />
-  <meta name="keywords" content="chess, clock, online, free" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui" />
-  <title>Chess Clock Online</title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-  <link type="text/css" rel="stylesheet" href="index.css" media="screen,projection" />
-</head>
-
-<body class="background">
-  <div class="column">
-    <button id="player1" class="button rotate"></button>
-    <div class="menu-bar">
-      <a id="pause" href="#!"><i id="pauseIcon" class="icon material-icons">pause</i></a>
-      <a id="restart" href="#!"> <i class="icon material-icons">replay</i></a>
-      <a id="settings" href="#!"><i class="icon material-icons">settings</i></a>
-    </div>
-    <button id="player2" class="button"></button>
-  </div>
-
-  <!-- The Modal -->
-  <div id="settings-menu" class="modal">
-    <!-- Modal content -->
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h1>Settings</h1>
-      <h2>Minutes per player</h2>
-      <input id="newmin" type="number" pattern="[0-9]*" min="1" max="180" />
-      <h2>Increment</h2>
-      <input id="newinc" type="number" pattern="[0-9]*" min="0" max="180" />
-      <div class="modal-footer">
-        <button id="clock" class="setclock">Set Clock</button>
+  <body class="background" x-data="getData()">
+    <main class="main">
+      <button
+        class="button-player button-player--rotated"
+        x-text="msToMin(player1Time)"
+        x-bind:disabled="isPlaying && isPlayer1Turn"
+        x-on:click="
+        isPlaying = true,
+        isPlayer1Turn = true,
+        player1Time += increment,
+        interval = setTimer(interval, updateTimePlayer2,$data)">
+      </button>
+      <div class="menu-bar">
+        <button
+          id="pause"
+          class="menu-bar__button"
+          x-bind:disabled="!isPlaying"
+          x-on:click="isPlaying = !isPlaying, clearInterval(interval)">
+          <i
+            class="menu-bar__icon material-icons"
+            x-text="isPlaying ? 'pause' : 'play_arrow'">
+          </i>
+        </button>
+        <button
+          id="restart"
+          class="menu-bar__button"
+          x-on:click="
+            player1Time = getTimeMillis(),
+            player2Time = getTimeMillis(),
+            increment = getIncMillis(),
+            isPlaying = false,
+            isPlayer1Turn = true,
+            clearInterval(interval)">
+          <i class="menu-bar__icon material-icons">replay</i>
+        </button>
+        <button
+          id="settings"
+          class="menu-bar__button"
+          x-on:click="openModal = true, isPlaying = false, clearInterval(interval)">
+          <i class="menu-bar__icon material-icons">settings</i>
+        </button>
       </div>
-    </div>
-  </div>
+      <button
+        id="player2"
+        class="button-player"
+        x-text="msToMin(player2Time)"
+        x-bind:disabled="isPlaying && !isPlayer1Turn"
+        x-on:click="
+        isPlaying = true,
+        isPlayer1Turn = false,
+        player2Time += increment,
+        interval = setTimer(interval, updateTimePlayer1,$data)
+        ">
+      </button>
+    </main>
 
-  <script type="text/javascript" src="index.js"></script>
-  <script type="text/javascript" src="menu.js"></script>
-</body>
+    <!-- The Modal -->
+    <dialog
+    id="settings-menu"
+    class="modal"
+    x-bind:class="openModal ? 'modal--opened' : ''">
+      <!-- Modal content -->
+      <form class="modal__content" method="get">
+        <span class="modal__close material-icons" x-on:click="openModal = false">close</span>
+        
+        <h1 class="modal__title">Settings</h1>
+        <p>
+          <label class="modal__label" for="time">Minutes per player</label>
+          <input class="modal__input" id="newmin" type="number" name="time" pattern="\d*" min="1" max="180" x-bind:value="time"/>
+        </p>
+        <p>
+          <label class="modal__label" for="inc">Increment</label>
+          <input class="modal__input" id="newinc" type="number" name="inc" pattern="\d*" min="0" max="180" x-bind:value="inc"/>
+        </p>
+        <div class="modal__footer">
+          <input class="modal__submit" type="submit" id="clock" class="setclock" value="Set Clock">
+        </div>
+      </form>
+    </dialog>
 
+    <script src="/js/app.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  </body>
 </html>
